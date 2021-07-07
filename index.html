@@ -21,7 +21,7 @@
 	</div>
 	<div class="main-form">
 		<form id="declareForm">
-			<div class="sign-up-htm">
+			<div class="info">
 				<div class="group">
 					<label for="user" class="label">Họ và tên</label>
 					<input id="user" type="text" class="input" placeholder="Tiếng Việt có dấu" autofocus>
@@ -61,8 +61,8 @@
 				</div>
 				<div class="group">
 				<label for="vacInjected" class="label">Loại vắc xin đã tiêm</label>
-				<input list="vactype">
-				<datalist id="vactype">
+				<input id="vactypeInput" class="input" list="vactype">
+				<datalist class="datalist" id="vactype">
 				<option value="Moderna">
 				<option value="SputnicV">
 				<option value="AstraZeneca">
@@ -71,21 +71,12 @@
 				</datalist>
 				</div>
 				
-				<div class="group">
-					<label for="pass" class="label">Repeat Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
-				</div>
-				<div class="group">
-					<label for="pass" class="label">Email Address</label>
-					<input id="pass" type="text" class="input">
-				</div>
-				
 			</div>
 		
 		</form>
 		<div class="btn">
-					<button id="btnDeclare" type="button" onclick="declareFunction()">Khai báo</button>
-					<button id="btnReset" type="button" onclick="resetFunction()">Nhập lại</button>
+					<button id="btnDeclare" class="button" type="button" onclick="declareFunction()">Khai báo</button>
+					<button id="btnReset" class="button" type="button" onclick="resetFunction()">Nhập lại</button>
 			</div>
 	</div>		
 	</div>
