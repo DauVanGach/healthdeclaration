@@ -12,12 +12,17 @@
   <body>
   <div class="page-all" id="page-all">
 	<div class="banner" id="banner-page">
-		<img id="favicon" src="favicon.png" alt="Girl in a jacket">
+		<img id="favicon" src="favicon.png" alt="172 - AntiCOVID">
+		<div class="banner-text-align">
+			<div class="bnrtxt" id="banner-text">172 - AntiCOVID Health Declaration</div>
+			<div class="bnrtxt" id="banner-text1">Lữ đoàn 172 chung tay đẩy lùi đại dịch COVID-19 </div>
+		</div>
 	</div>
 	<div class="qr" id="qrcodeView"
 		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 			<g id="qrcode"/>
 		</svg>
+		<div id="qrdescript"> Hãy trình mã này dưới máy quét QR</div>
 	</div>
 	<div class="main-form">
 		<form id="declareForm">
@@ -75,7 +80,8 @@
 		
 		</form>
 		<div class="btn">
-					<button id="btnDeclare" class="button" type="button" onclick="declareFunction()">Khai báo</button>
+					<button id="btnDeclare" class="button" type="button" onclick="declareFunction()">Tạo mã khai báo</button>
+					<button id="btnReDeclare" class="button" type="button" onclick="reDeclareFunction()">Sửa lời khai</button>
 					<button id="btnReset" class="button" type="button" onclick="resetFunction()">Nhập lại</button>
 			</div>
 	</div>		
@@ -112,15 +118,24 @@
   function declareFunction(){
 	var qrcodeView = document.getElementById("qrcodeView");
 	var formView = document.getElementById("declareForm");
+	var qrdescript = document.getElementById("qrdescript");
 	makeCode();
 	formView.style.display = "none"
 	qrcodeView.style.display = "block";
+	qrdescript.style.display = "block";
 	
   }
   function  resetFunction(){
 	var qrcodeView = document.getElementById("qrcodeView");
 	var formView = document.getElementById("declareForm");
 	document.getElementById("declareForm").reset();
+	qrcodeView.style.display = "none";
+	formView.style.display = "block"
+  }
+  function reDeclareFunction(){
+	var qrcodeView = document.getElementById("qrcodeView");
+	var formView = document.getElementById("declareForm");
+	//document.getElementById("declareForm").reset();
 	qrcodeView.style.display = "none";
 	formView.style.display = "block"
   }

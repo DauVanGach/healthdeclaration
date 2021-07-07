@@ -23,17 +23,33 @@ a{color:inherit;text-decoration:none}
 	position:relative;
 	display: inline-block;
 }
+#qrdescript{
+	display:none;
+}
 .page-all .banner{
 	border: 1px solid blue;
+	background-color:#ffff80;
+}
+.page-all .banner .banner-text-align{
+	display:inline-block;
+}
+.page-all .banner .banner-text-align .bnrtxt{
+	font-family:Arial, Helvetica, fantasy;
+}
+#banner-text{
+	font-size:500%;
+	color:red;
+}
+#banner-text1{
+	font-size:150%;
+	color:blue;
 }
 .page-all .banner img{
 	width:10%;
 	height:auto;
-	margin-right:15px;
-	padding-bottom:5px;
-	margin:10px 15px 10px 10px;
+	margin:10px 10px 10px 10px;
 	position:relative;
-	display: inline-block;
+	display:inline-block;
 }
 .btn{
 	position:relative;
@@ -42,7 +58,7 @@ a{color:inherit;text-decoration:none}
 	width:100%;
 	height:100%;
 	position:relative;
-	padding:90px 70px 50px 70px;
+	padding:10px 70px 50px 70px;
 	background:rgba(40,57,101,.9);
 }
 
