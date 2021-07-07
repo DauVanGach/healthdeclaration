@@ -11,7 +11,7 @@ body{
 a{color:inherit;text-decoration:none}
 .page-all{
 	margin: auto;
-	width: 30%;
+	width: 100%;
 	border: 1px solid blue;
 	padding: 0px;
 }
