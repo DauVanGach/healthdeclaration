@@ -76,9 +76,11 @@ a{color:inherit;text-decoration:none}
 .main-form .group .button,
 .main-form .declare .group .input{
 	border:none;
+        box-shadow:none;
+        
 	padding:15px 20px;
-	border-radius:25px;
-	background:rgba(255,255,255,.1);
+	border-radius:5%;
+	background:none;
 }
 .main-form .declare .time,
 .main-form .declare .date,
