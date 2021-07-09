@@ -25,6 +25,7 @@
 		<div id="qrdescript"> Hãy trình mã này dưới máy quét QR</div>
 	</div>
 	<div class="main-form">
+	<div id ="title-declare" class="title-declare"> TỜ KHAI Y TẾ:</div>
 		<form id="declareForm">
 			<div class="info">
 				<fieldset>
@@ -80,37 +81,39 @@
 				<legend>Thông tin tiếp xúc</legend>
 				<div class="group">
 					<div id="fieldDeclarre">
-						Từ:<input id="timeContact11" type="number" class="time" placeholder="Giờ" min="0" max="23">
-						Ngày:<input id="dateContact11" type="date" class="date" placeholder="Ngày">
-						Đến:<input id="timeContact12" type="number" class="time" placeholder="Giờ" min="0" max="23">
-						Ngày:<input id="dateContact12" type="date" class="date" placeholder="Ngày">
-						Làm:<input id="persionContact1" type="text" class="input-contact" placeholder="Tiếng Việt có dấu">
-						<button id="removeField" type="button" class="btn"> Xóa khai báo này</button>
+						Thời gian:<input id="timeContact11" type="number" class="input" placeholder="Từ giờ" min="0" max="23">
+						<input id="dateContact11" type="date" class="input" placeholder="Ngày">
+						<input id="timeContact12" type="number" class="input" placeholder="Đến giờ" min="0" max="23">
+						<input id="dateContact12" type="date" class="input" placeholder="Ngày">
+						<input id="persionContact1" type="text" class="input" placeholder="Tiếng Việt có dấu">
+						<button id="removeField" type="button" class="button"> Xóa khai báo này</button>
 					</div>
 				</div>
 				<div id="newField"></div>
-				<button id="addField" type="button" class="btn"> Thêm khai báo </button>
+				<button id="addField" type="button" class="button"> Thêm khai báo </button>
 				</fieldset>
 				
 			</div>
 		
 		</form>
-		<div class="btn">
+		<div class="button-control">
 					<button id="btnDeclare" class="button" type="button" onclick="declareFunction()">Tạo mã</button>
 					<button id="btnReDeclare" class="button" type="button" onclick="reDeclareFunction()">Sửa lời khai</button>
 					<button id="btnReset" class="button" type="button" onclick="resetFunction()">Nhập lại</button>
-			</div>
+		</div>
 	</div>		
 	</div>
 	<script type="text/javascript">
-  var qrcode = new QRCode(document.getElementById("qrcode"), {
-      width : 300,
-      height : 300,
-      useSVG: true
-  });
+		var qrcode = new QRCode(document.getElementById("qrcode"),{
+		width : 300,
+		height : 300,
+		useSVG: true
+		});
+		var x = 1;
 
   function makeCode () {		
 		var alterText = "Tờ khai y tế \n";
+		var filedContactIf = ''; // Giá trị lưu biến nơi tiếp xúc
 		var userText =  document.getElementById("user");
 		var birthdayText =  document.getElementById("birthday");
 		//var sexText =  document.getElementByName("sex");
@@ -118,10 +121,21 @@
 		//var position_Text =  document.getElementById("position_");
 		var unit_Text =  document.getElementById("unit_");
 		var phoneNumberText =  document.getElementById("phoneNumber");
-		//var vacInjectText =  document.getElementByName("vacInject");
+		var vacTypeText =  document.querySelector('#vactypeInput').value;
+		if(!vacTypeText) vacTypeText = "";
 		
+		alterText = alterText + userText.value + birthdayText.value.toString() + $("input[type='radio'][name='sex']:checked").val() + unit_Text.value + phoneNumberText.value.toString() + $("input[type='radio'][name='vacInject']:checked").val() + vacTypeText + $("input[type='radio'][name='symptoms']:checked").val();
 		
-		alterText = alterText + userText.value + birthdayText.value.toString() + $("input[type='radio'][name='sex']:checked").val() + unit_Text.value + phoneNumberText.value.toString() + $("input[type='radio'][name='vacInject']:checked").val();
+		if(x >= 0){
+			for(let  i = 0; i <= x;i++){
+				filedContactIf = 	filedContactIf + document.getElementById("timeContact"+ x +"1").value.toString() + "&" +
+									document.getElementById("dateContact"+ x +"1").value.toString() + "&" +
+									document.getElementById("timeContact"+ x +"2").value.toString() + "&" +
+									document.getElementById("dateContact"+ x +"2").value.toString() + "&";
+			}
+		}
+		
+		alterText = alterText + filedContactIf;
 		if (!alterText) {
 			alert("Input a text");
 			return;
@@ -135,12 +149,14 @@
 	var qrcodeView = document.getElementById("qrcodeView");
 	var formView = document.getElementById("declareForm");
 	var qrdescript = document.getElementById("qrdescript");
+	var titleDeclare = document.getElementById("title-declare");
 	makeCode();
 	formView.style.display = "none"
 	qrcodeView.style.display = "block";
-	qrdescript.style.display = "block";
+	titleDeclare.style.display = "none";
 	
   }
+  
   function  resetFunction(){
 	var qrcodeView = document.getElementById("qrcodeView");
 	var formView = document.getElementById("declareForm");
@@ -148,6 +164,7 @@
 	qrcodeView.style.display = "none";
 	formView.style.display = "block"
   }
+  
   function reDeclareFunction(){
 	var qrcodeView = document.getElementById("qrcodeView");
 	var formView = document.getElementById("declareForm");
@@ -157,23 +174,27 @@
   }
   // add filed
 	$("#addField").click(function () {
+		if(x >= 0) x++;
 		var html = '';
 			html += '<div id="fieldDeclarre">';
-			html += 'Từ:<input id="timeContact11" type="number" class="time" placeholder="Giờ" min="0" max="23">';
-			html += 'Ngày:<input id="dateContact11" type="date" class="date" placeholder="Ngày">';
-			html += 'Đến:<input id="timeContact12" type="number" class="time" placeholder="Giờ" min="0" max="23">';
-			html += 'Ngày:<input id="dateContact12" type="date" class="date" placeholder="Ngày">';
-			html += 'Làm:<input id="persionContact1" type="text" class="input-contact" placeholder="Tiếng Việt có dấu">';
-			html += '<button id="removeField" type="button" class="btn"> Xóa khai báo này</button>';
+			html += '<input id="timeContact' + x + '1" type="number" class="input" placeholder="Từ giờ" min="0" max="23">';
+			html += '<input id="dateContact' + x + '1" type="date" class="input" placeholder="Ngày">';
+			html += '<input id="timeContact' + x + '2" type="number" class="input" placeholder="Đến giờ" min="0" max="23">';
+			html += '<input id="dateContact' + x + '2" type="date" class="input" placeholder="Ngày">';
+			html += '<input id="persionContact' + x + '" type="text" class="input" placeholder="Tiếng Việt có dấu">';
+			html += '<button id="removeField" type="button" class="button"> Xóa khai báo này</button>';
 			html += '</div>';
 			html += '</div>';
 			
 		$('#newField').append(html);
-        });
+		});
 
         // remove field
         $(document).on('click', '#removeField', function () {
-            $(this).closest('#fieldDeclarre').remove();
+			if(x >= 0){	//Check number of field
+				x--;
+				$(this).closest('#fieldDeclarre').remove();
+			}
         });
     </script>
 	
