@@ -1,6 +1,12 @@
 var CACHE_NAME = 'health_main';
 var urlsToCache = [
-  '/',
+  'index.html',
+  'style.css',
+  'sw.js',
+  'dvhc_data.xml',
+  'scripts/'
+  'images/',
+  'data/'
 ];
 self.addEventListener('install', function(event) {
   // Perform install steps
