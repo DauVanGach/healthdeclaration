@@ -3,7 +3,6 @@ var urlsToCache = [
   'index.html',
   'style.css',
   'service-workers.js',
-  'dvhc_data.xml',
   'scripts/indexDB.js',
   'scripts/jquery.min.js',
   'scripts/main.js',
