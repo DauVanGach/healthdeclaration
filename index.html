@@ -4,15 +4,17 @@
     <title>172 - AntiCOVID Health Declaration </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-    <script type="text/javascript" src="jquery.min.js"></script>
-    <script type="text/javascript" src="qrcode.js"></script>
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/qrcode.js"></script>
+	<script type="text/javascript" src="scripts/main.js"></script>
+	<link rel="manifest" href="manifest.json">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="icon" type="image/png" href="favicon.png"/>
+	<link rel="icon" type="image/png" href="images/favicon.png"/>
   </head>
   <body>
   <div class="page-all" id="page-all">
 	<div class="banner" id="banner-page">
-		<img id="favicon" src="favicon.png" alt="172 - AntiCOVID">
+		<img id="favicon" src="images/favicon.png" alt="172 - AntiCOVID">
 		<div class="banner-text-align">
 			<div class="bnrtxt" id="banner-text">172 - AntiCOVID Health Declaration</div>
 			<div class="bnrtxt" id="banner-text1">Lữ đoàn 172 chung tay đẩy lùi đại dịch COVID-19 </div>
@@ -25,8 +27,8 @@
 		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 			<g id="qrcode"/>
 		</svg>
-		<div id="qrdescript"> Hãy trình mã này dưới máy quét QR</div>
 	</div>
+	<div id="qrdescript" class="title-qrcode"> Hãy trình mã này dưới máy quét QR</div>
 	<div class="main-form">
 	<div id ="title-declare" class="title-declare"> TỜ KHAI Y TẾ:</div>
 		<form id="declareForm">
@@ -172,12 +174,14 @@
 			</div>
 		
 		</form>
+		<div id="" class="" name=""></div>
 		<div class="button-control">
 					<button id="btnDeclare" class="button" type="button" onclick="declareFunction()">Tạo mã</button>
 					<button id="btnReDeclare" class="button" type="button" onclick="reDeclareFunction()">Sửa lời khai</button>
 					<button id="btnReset" class="button" type="button" onclick="resetFunction()">Nhập lại</button>
 		</div>
-	</div>		
+	</div>	
+	<div id="foot-lnk" class="foot-lnk" name="foot-lnk"> Design by Nguyen Bien Ban</div>
 	</div>
 	<script type="text/javascript">
 		var qrcode = new QRCode(document.getElementById("qrcode"),{
@@ -193,9 +197,6 @@
 		var filedContactInf = ''; // Giá trị lưu biến nơi tiếp xúc
 		var userText =  document.getElementById("user");
 		var birthdayText =  document.getElementById("birthday");
-		//var sexText =  document.getElementByName("sex");
-		//var rank_Text =  document.getElementById("rank_");
-		//var position_Text =  document.getElementById("position_");
 		var unit_Text =  document.getElementById("unit_");
 		var phoneNumberText =  document.getElementById("phoneNumber");
 		var vacTypeText =  document.querySelector('#vactypeInput').value;
@@ -235,23 +236,32 @@
 	formView.style.display = "none"
 	qrcodeView.style.display = "block";
 	titleDeclare.style.display = "none";
+	qrdescript.style.display  = "block";
 	
   }
   
   function  resetFunction(){
 	var qrcodeView = document.getElementById("qrcodeView");
 	var formView = document.getElementById("declareForm");
+	var titleDeclare = document.getElementById("title-declare");
+	var qrdescript = document.getElementById("qrdescript");
 	document.getElementById("declareForm").reset();
 	qrcodeView.style.display = "none";
 	formView.style.display = "block"
+	titleDeclare.style.display = "block";
+	qrdescript.style.display  = "none";
   }
   
   function reDeclareFunction(){
 	var qrcodeView = document.getElementById("qrcodeView");
 	var formView = document.getElementById("declareForm");
+	var titleDeclare = document.getElementById("title-declare");
+	var qrdescript = document.getElementById("qrdescript");
 	//document.getElementById("declareForm").reset();
 	qrcodeView.style.display = "none";
 	formView.style.display = "block"
+	titleDeclare.style.display = "block";
+	qrdescript.style.display  = "none";
   }
 		// add filed
 		$("#addField").click(function () {
