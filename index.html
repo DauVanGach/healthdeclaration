@@ -202,18 +202,18 @@
 		var vacTypeText =  document.querySelector('#vactypeInput').value;
 		if(!vacTypeText) vacTypeText = "";
 		
-		alterText = alterText + userText.value + birthdayText.value.toString() + $("input[type='radio'][name='sex']:checked").val() + unit_Text.value + phoneNumberText.value.toString() + $("input[type='radio'][name='vacInject']:checked").val() + vacTypeText + $("input[type='radio'][name='symptoms']:checked").val();
+		alterText = alterText + userText.value + '\n' + birthdayText.value.toString() + '\n' + $("input[type='radio'][name='sex']:checked").val() + '\n' + unit_Text.value + '\n' + phoneNumberText.value.toString() + '\n' + $("input[type='radio'][name='vacInject']:checked").val() + '\n' + vacTypeText + '\n' + $("input[type='radio'][name='symptoms']:checked").val() + '\n';
 		
 		if(x >= 1){
 			for(let  i = 1; i <= x;i++){
-				filedContactInf = 	filedContactInf + document.getElementById("timeContact"+ i +"1").value.toString() + "&" +
-									document.getElementById("dateContact"+ i +"1").value.toString() + "&" +
-									document.getElementById("timeContact"+ i +"2").value.toString() + "&" +
-									document.getElementById("dateContact"+ i +"2").value.toString() + "&" +
-									document.getElementById("noiDenTinhId"+ i).value.toString() + "&" +
-									document.getElementById("noiDenHuyenId"+ i).value.toString() + "&" +
-									document.getElementById("noiDenXaId"+ i).value.toString() + "&" +
-									document.getElementById("persionContact"+ i).value.toString() + "&";
+				filedContactInf = 	filedContactInf + document.getElementById("timeContact"+ i +"1").value.toString() + "\n" +
+									document.getElementById("dateContact"+ i +"1").value.toString() + "\n" +
+									document.getElementById("timeContact"+ i +"2").value.toString() + "\n" +
+									document.getElementById("dateContact"+ i +"2").value.toString() + "\n" +
+									document.getElementById("noiDenTinhId"+ i).value.toString() + "\n" +
+									document.getElementById("noiDenHuyenId"+ i).value.toString() + "\n" +
+									document.getElementById("noiDenXaId"+ i).value.toString() + "\n" +
+									document.getElementById("persionContact"+ i).value.toString() + "\n";
 			}
 		}
 		
