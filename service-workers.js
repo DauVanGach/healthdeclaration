@@ -3,8 +3,7 @@ var urlsToCache = [
   'index.html',
   'style.css',
   'service-workers.js',
-  'dvhc_data.xml',
-  'scripts/indexDB.js',
+  'scripts/idb.js',
   'scripts/jquery.min.js',
   'scripts/main.js',
   'scripts/qrcode.js',
@@ -20,8 +19,9 @@ var urlsToCache = [
   'images/icon-256x256.png',
   'images/icon-512x512.png',
   'images/KHAI BAO Y TE 172.svg',
-  //'data/dvhc_data.json'
+  'data/dvhc.js'
 ];
+
 self.addEventListener('install', function(event) {
   // Perform install steps
   event.waitUntil(

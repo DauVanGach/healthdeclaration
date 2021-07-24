@@ -26,6 +26,10 @@ a{color:inherit;text-decoration:none}
 #qrdescript{
 	display:none;
 }
+#btnSave{
+	display:none;
+	background-color:  #009900;
+}
 .page-all .banner{
 	border: 1px solid blue;
 	background-color:#ffff80;
@@ -90,9 +94,7 @@ a{color:inherit;text-decoration:none}
 .button:hover{
         background-color:  #009900;
     };
-#btnReset{
-	background:red;
-}
+
 .main-form .group .label{
 	color:black;
 	font-size:14px;
