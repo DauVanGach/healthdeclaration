@@ -111,7 +111,7 @@
 	}
 
   function makeCode() {		
-		userCodeSaved = "Tờ khai y tế %";
+		userCodeSaved = Date();
 		var filedContactInf = ''; // Giá trị lưu biến nơi tiếp xúc
 		var userText =  document.getElementById("user");
 		var birthdayText =  document.getElementById("birthday");
@@ -120,13 +120,13 @@
 		var vacTypeText =  document.querySelector('#vactypeInput').value;
 		if(!vacTypeText) vacTypeText = "";
 		
-		userCodeSaved = userCodeSaved + userText.value + '%' + birthdayText.value.toString() + '%' + $("input[type='radio'][name='sex']:checked").val() + '%' + unit_Text.value + '%' + phoneNumberText.value.toString() + '%' + $("input[type='radio'][name='vacInject']:checked").val() + '%' + vacTypeText + '%' + $("input[type='radio'][name='symptoms']:checked").val() + '%';
+		userCodeSaved = userCodeSaved + '%' + x + '%' + userText.value + '%' + birthdayText.value.toString() + '%' + $("input[type='radio'][name='sex']:checked").val() + '%' + unit_Text.value + '%' + phoneNumberText.value.toString() + '%' + $("input[type='radio'][name='vacInject']:checked").val() + '%' + vacTypeText + '%' + $("input[type='radio'][name='symptoms']:checked").val() + '%';
 		if(x >= 1){
 			for(let  i = 1; i <= x; i++){
 				filedContactInf = 	filedContactInf + document.getElementById("timeContact1"+ i).value.toString() + "%" +
-									document.getElementById("dateContact1"+ i).value.toString() + "%" +
+									document.getElementById("dateContact1"+ i).value.toString().split("-").reverse().join("-") + "%" +
 									document.getElementById("timeContact2"+ i).value.toString() + "%" +
-									document.getElementById("dateContact2"+ i).value.toString() + "%" +
+									document.getElementById("dateContact2"+ i).value.toString().split("-").reverse().join("-") + "%" +
 									document.getElementById("noiDenTinhId"+ i).value.toString() + "%" +
 									document.getElementById("noiDenHuyenId"+ i).value.toString() + "%" +
 									document.getElementById("noiDenXaId"+ i).value.toString() + "%" +
